@@ -21,6 +21,7 @@ public class EnemyPlantBase : MonoBehaviour
     private string lastX = "LastMoveX";
     private string lastY = "LastMoveY";
     private string speedMag = "speedMag";
+    protected string attack = "isAttacking?";
 
     protected Vector2 direction,movement;
 
@@ -49,6 +50,7 @@ public class EnemyPlantBase : MonoBehaviour
                 Chase();
                 break;
             case PlantState.Attack:
+                Attack();
                 break;
             case PlantState.Return:
                 break;
@@ -76,6 +78,11 @@ public class EnemyPlantBase : MonoBehaviour
     {
         float distance = Vector2.Distance(transform.position, player.transform.position);
         return distance <= detectionRange;
+    }
+
+    protected virtual void Attack()
+    {
+
     }
 
     protected void Chase()
