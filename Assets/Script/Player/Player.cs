@@ -41,8 +41,7 @@ public class Player : MonoBehaviour
 
         HandleMovement();
 
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            Debug.Log(facingLeft);
+        
     }
 
     private void ProcessInput()

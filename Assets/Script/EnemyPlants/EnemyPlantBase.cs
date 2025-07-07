@@ -7,21 +7,90 @@ public class EnemyPlantBase : MonoBehaviour
     [Header("Movement Settings")]
     [SerializeField] protected float speed = 2f;
     [SerializeField] protected Transform[] moveSpots;
-    [SerializeField] protected float waitTimeAtSpot = 1f;
+    [SerializeField] protected float waitTimeAtSpot = 5f;
+    protected GameObject player;
 
     protected int currentSpotIndex = 0;
     protected float waitTimer;
 
-    // Start is called before the first frame update
+    protected Animator animator;
+    private bool facingLeft = false;
+
+    private string moveX = "MoveX";
+    private string moveY = "MoveY";
+    private string lastX = "LastMoveX";
+    private string lastY = "LastMoveY";
+    private string speedMag = "speedMag";
+
+    protected Vector2 direction,movement;
+
+    protected PlantState plantState;
     protected virtual void Start()
     {
         waitTimer = waitTimeAtSpot;
+        animator = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player");
+        plantState = PlantState.Patrol;
     }
 
-    // Update is called once per frame
+    
     protected virtual void Update()
     {
-        Patrol();
+        switch (plantState)
+        {
+            case PlantState.Patrol:
+                Patrol();
+                if(CanSeePlayer(1f))
+                {
+                    plantState = PlantState.Chase;
+                }
+                break;
+            case PlantState.Chase:
+                Chase();
+                break;
+            case PlantState.Attack:
+                break;
+            case PlantState.Return:
+                break;
+                // TODO
+        }
+
+        if (direction.x < 0 && !facingLeft)
+            Flip();
+        else if (direction.x > 0 && facingLeft)
+            Flip();
+
+        animator.SetFloat(moveX, direction.x);
+        animator.SetFloat(moveY, direction.y);
+        animator.SetFloat(speedMag, movement.magnitude / Time.deltaTime);
+
+        if (direction != Vector2.zero)
+        {
+            animator.SetFloat(lastX, direction.x);
+            animator.SetFloat(lastY, direction.y);
+        }
+        
+    }
+
+    protected bool CanSeePlayer(float detectionRange)
+    {
+        float distance = Vector2.Distance(transform.position, player.transform.position);
+        return distance <= detectionRange;
+    }
+
+    protected void Chase()
+    {
+        if (Vector2.Distance(transform.position, player.transform.position) < 0.2f)
+        {
+            plantState = PlantState.Attack;
+        }
+        else
+        {
+            direction = (player.transform.position - transform.position).normalized;
+            Vector2 newPosition = Vector2.MoveTowards(transform.position, player.transform.position, speed*2 * Time.deltaTime);
+            movement = newPosition - (Vector2)transform.position;
+            transform.position = newPosition;
+        }
     }
 
     protected void Patrol()
@@ -29,7 +98,6 @@ public class EnemyPlantBase : MonoBehaviour
         if (moveSpots.Length == 0) return;
 
         Transform targetSpot = moveSpots[currentSpotIndex];
-        transform.position = Vector2.MoveTowards(transform.position, targetSpot.position, speed * Time.deltaTime);
 
         if (Vector2.Distance(transform.position, targetSpot.position) < 0.2f)
         {
@@ -37,11 +105,28 @@ public class EnemyPlantBase : MonoBehaviour
             {
                 currentSpotIndex = (currentSpotIndex + 1) % moveSpots.Length;
                 waitTimer = waitTimeAtSpot;
+                
             }
             else
             {
                 waitTimer -= Time.deltaTime;
+                animator.SetFloat(speedMag, 0);
             }
         }
+        else
+        {
+            direction = (targetSpot.position - transform.position).normalized;
+            Vector2 newPosition = Vector2.MoveTowards(transform.position, targetSpot.position, speed * Time.deltaTime);
+            movement = newPosition - (Vector2)transform.position;
+            transform.position = newPosition;
+        }        
+    }
+
+    private void Flip()
+    {
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
+        facingLeft = !facingLeft;
     }
 }
