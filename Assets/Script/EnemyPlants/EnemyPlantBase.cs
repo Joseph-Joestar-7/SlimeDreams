@@ -5,12 +5,12 @@ using UnityEngine;
 public class EnemyPlantBase : MonoBehaviour
 {
     [Header("Movement Settings")]
-    [SerializeField] private float speed = 2f;
-    [SerializeField] private Transform[] moveSpots;
-    [SerializeField] private float waitTimeAtSpot = 1f;
+    [SerializeField] protected float speed = 2f;
+    [SerializeField] protected Transform[] moveSpots;
+    [SerializeField] protected float waitTimeAtSpot = 1f;
 
-    private int currentSpotIndex = 0;
-    private float waitTimer;
+    protected int currentSpotIndex = 0;
+    protected float waitTimer;
 
     // Start is called before the first frame update
     protected virtual void Start()
