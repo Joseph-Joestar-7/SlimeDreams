@@ -21,7 +21,7 @@ public class EnemyPlantBase : MonoBehaviour
     private string lastX = "LastMoveX";
     private string lastY = "LastMoveY";
     private string speedMag = "speedMag";
-    protected string attack = "isAttacking?";
+    protected string attackTrigger = "Attack";
 
     protected Vector2 direction,movement;
 
@@ -82,7 +82,7 @@ public class EnemyPlantBase : MonoBehaviour
 
     protected virtual void Attack()
     {
-
+        animator.SetTrigger(attackTrigger);
     }
 
     protected void Chase()
@@ -90,6 +90,7 @@ public class EnemyPlantBase : MonoBehaviour
         if (Vector2.Distance(transform.position, player.transform.position) < 0.2f)
         {
             plantState = PlantState.Attack;
+            
         }
         else
         {
