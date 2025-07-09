@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,11 +25,15 @@ public class EnemyPlantBase : MonoBehaviour
     protected string attackTrigger = "Attack";
 
     protected Vector2 direction,movement;
-
+    [SerializeField] protected float attackDistance = 0.5f;
     protected PlantState plantState;
+
+    [SerializeField] private int attackTimeCooldown;
+    private float attackTimer;
     protected virtual void Start()
     {
         waitTimer = waitTimeAtSpot;
+        attackTimer = 0;
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         plantState = PlantState.Patrol;
@@ -77,28 +82,41 @@ public class EnemyPlantBase : MonoBehaviour
     protected bool CanSeePlayer(float detectionRange)
     {
         float distance = Vector2.Distance(transform.position, player.transform.position);
+        
         return distance <= detectionRange;
     }
 
     protected virtual void Attack()
     {
-        animator.SetTrigger(attackTrigger);
+        attackTimer-= Time.deltaTime;
+
+        if (attackTimer <= 0f)
+        {
+            if (direction != Vector2.zero)
+            {
+                animator.SetFloat(lastX, (float)Math.Ceiling(direction.x));
+                animator.SetFloat(lastY, (float)Math.Ceiling(direction.y));
+            }
+            animator.SetTrigger(attackTrigger);
+            
+            attackTimer = attackTimeCooldown;
+        }
     }
 
     protected void Chase()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) < 0.2f)
+        if (Vector2.Distance(transform.position, player.transform.position) < 0.5f)
         {
             plantState = PlantState.Attack;
-            
         }
         else
         {
             direction = (player.transform.position - transform.position).normalized;
-            Vector2 newPosition = Vector2.MoveTowards(transform.position, player.transform.position, speed*2 * Time.deltaTime);
+            Vector2 newPosition = Vector2.MoveTowards(transform.position, player.transform.position, speed * 2 * Time.deltaTime);
             movement = newPosition - (Vector2)transform.position;
             transform.position = newPosition;
         }
+
     }
 
     protected void Patrol()

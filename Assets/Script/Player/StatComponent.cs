@@ -23,4 +23,9 @@ public class StatComponent : MonoBehaviour
         lucidity = Mathf.Clamp(lucidity, 0, 100);
         coins = Mathf.Max(0, coins);
     }
+
+    private void Update()
+    {
+       
+    }
 }

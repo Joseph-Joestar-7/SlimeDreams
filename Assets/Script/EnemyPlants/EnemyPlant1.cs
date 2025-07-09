@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class EnemyPlant1 : EnemyPlantBase
 {
-    protected override void Attack()
+    public void ApplyAttackDamage()
     {
-        base.Attack();
-
+        if (player != null)
+        {
+            Debug.Log("Attack Called");
+            player.GetComponent<StatComponent>().IncreaseValue(StatType.Lucidity, -10);
+        }
     }
 }
