@@ -93,14 +93,15 @@ public class EnemyPlantBase : MonoBehaviour
 
         if (attackTimer <= 0f)
         {
-            if (direction != Vector2.zero)
-            {
-                animator.SetFloat(lastX, (float)Math.Ceiling(direction.x));
-                animator.SetFloat(lastY, (float)Math.Ceiling(direction.y));
-            }
+
+            animator.SetFloat(lastX, (float)Math.Ceiling(direction.x));
+            animator.SetFloat(lastY, (float)Math.Ceiling(direction.y));
+            //Debug.Log(direction.x + " " + direction.y);
+            //Debug.Log((float)Math.Ceiling(direction.x) + " " + (float)Math.Ceiling(direction.y));
+
             animator.SetTrigger(attackTrigger);
             
-            attackTimer = attackTimeCooldown;
+         attackTimer = attackTimeCooldown;
         }
     }
 
