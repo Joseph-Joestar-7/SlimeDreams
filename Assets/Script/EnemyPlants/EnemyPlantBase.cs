@@ -30,6 +30,7 @@ public class EnemyPlantBase : MonoBehaviour
 
     [SerializeField] private int attackTimeCooldown;
     private float attackTimer;
+    [SerializeField] protected int damageValue;
     protected virtual void Start()
     {
         waitTimer = waitTimeAtSpot;

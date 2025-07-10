@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class EnemyPlant1 : EnemyPlantBase
 {
+    
     public void ApplyAttackDamage()
     {
         if (player != null)
         {
-            Debug.Log("Attack Called");
-            player.GetComponent<StatComponent>().IncreaseValue(StatType.Lucidity, -10);
+            player.GetComponent<StatComponent>().IncreaseValue(StatType.Lucidity, -(damageValue/2));
         }
     }
 }
