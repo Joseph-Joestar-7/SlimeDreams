@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour
 {
+    private string PLAYER_TAG = "Player";
     // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (collision.CompareTag(PLAYER_TAG))
+        {
+            collision.GetComponent<StatComponent>().IncreaseValue(StatType.Coins, 1);
+            Destroy(gameObject);
+        }
     }
 }
