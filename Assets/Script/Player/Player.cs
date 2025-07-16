@@ -39,7 +39,10 @@ public class Player : MonoBehaviour
 
     private void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
-        throw new System.NotImplementedException();
+        if (selectedInteractable != null)
+        {
+            selectedInteractable.Interact();
+        }
     }
 
 
