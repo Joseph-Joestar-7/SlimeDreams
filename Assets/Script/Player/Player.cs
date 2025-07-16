@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +26,8 @@ public class Player : MonoBehaviour
     private string lastX = "LastMoveX";
     private string lastY = "LastMoveY";
 
-    [SerializeField] private LayerMask countersLayerMask;
+    [SerializeField] private LayerMask interactionLayerMask;
+    private I_Interactable selectedInteractable;
 
     void Start()
     {
@@ -51,8 +53,26 @@ public class Player : MonoBehaviour
             Flip();
 
         HandleMovement();
-
+        HandleInteractions();
         
+    }
+
+    private void HandleInteractions()
+    {
+        float interactRadius = 2f;
+        Collider2D hit = Physics2D.OverlapCircle(transform.position, interactRadius, interactionLayerMask);
+        if (hit != null && hit.TryGetComponent(out I_Interactable i))
+        {
+            if (i != selectedInteractable)
+                selectedInteractable = i;
+            else
+                selectedInteractable = null;
+        }
+        else
+        {
+            selectedInteractable = null;
+        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
