@@ -25,11 +25,22 @@ public class Player : MonoBehaviour
     private string lastX = "LastMoveX";
     private string lastY = "LastMoveY";
 
+    [SerializeField] private LayerMask countersLayerMask;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        gameInput.OnInteractAction += GameInput_OnInteractAction;
     }
+
+    private void GameInput_OnInteractAction(object sender, System.EventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+
 
     void Update()
     {
