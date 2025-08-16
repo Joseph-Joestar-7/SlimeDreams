@@ -20,7 +20,7 @@ public class ShootingCrystal : MonoBehaviour
         if (player == null)
             return;
 
-        Instantiate()
+        
     }
 
     // Start is called before the first frame update
