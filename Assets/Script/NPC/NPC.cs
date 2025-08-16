@@ -6,7 +6,12 @@ using UnityEngine.UI;
 
 public class NPC : MonoBehaviour, I_Interactable
 {
-    [SerializeField] private NPCDialogue dialogueData;
+    //[SerializeField] private NPCDialogue dialogueData;
+
+    [SerializeField] private NPCDialogue[] dialogueSequence;
+    private int currentDialogueSet = 0;
+    private NPCDialogue CurrentDialogue => dialogueSequence[currentDialogueSet];
+
     [SerializeField] private GameObject dialoguePanel;
     [SerializeField] private TMP_Text dialogueText, nameText;
     [SerializeField] private Image portraitImage;
@@ -20,7 +25,7 @@ public class NPC : MonoBehaviour, I_Interactable
     }
     public void Interact()
     {
-        if (dialogueData == null || !isDialogueActive)
+        if (dialogueData == null)
         {
             return;
         }
