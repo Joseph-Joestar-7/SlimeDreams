@@ -32,6 +32,8 @@ public class EnemyPlantBase : MonoBehaviour
     private float attackTimer;
     [SerializeField] protected int damageValue;
 
+
+    [SerializeField] protected float health=100;
     
     protected virtual void Start()
     {
@@ -40,6 +42,16 @@ public class EnemyPlantBase : MonoBehaviour
         animator = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         plantState = PlantState.Patrol;
+    }
+
+    public virtual void OnDamage(float damage)
+    {
+        health -= damage;
+        Debug.Log(health);
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     

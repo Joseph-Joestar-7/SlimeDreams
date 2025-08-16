@@ -1118,6 +1118,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1817917941, guid: 3d9f7664c356ece4b9223a5d45e151f3, type: 3}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1817917941, guid: 3d9f7664c356ece4b9223a5d45e151f3, type: 3}
       propertyPath: damageValue
       value: 5
       objectReference: {fileID: 0}
@@ -30840,6 +30844,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92f0abfe0f82ec4ea2f1578f550363e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameInput: {fileID: 1085888102}
+  projectile: {fileID: 372132351961466188, guid: d449e599ad931f54b96ef7701f227106, type: 3}
 --- !u!212 &1441032500
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -30900,7 +30906,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1441032498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.229, y: 1.495, z: 0}
+  m_LocalPosition: {x: -6.229, y: 1.509, z: 0}
   m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 1
   m_Children:

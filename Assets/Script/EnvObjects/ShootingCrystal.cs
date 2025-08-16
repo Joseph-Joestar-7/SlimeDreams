@@ -7,7 +7,6 @@ public class ShootingCrystal : MonoBehaviour
     private GameObject player;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private GameObject projectile;
-
     private void Start()
     {
         player = null;
@@ -20,7 +19,13 @@ public class ShootingCrystal : MonoBehaviour
         if (player == null)
             return;
 
+        GameObject proj = Instantiate(projectile, this.transform.position, Quaternion.identity);
+
         
+        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 direction = (mousePos - this.transform.position).normalized;
+        proj.GetComponent<Projectile>().SetDirection(direction);
+        proj.GetComponent<Projectile>().SetDamage(10);
     }
 
     // Start is called before the first frame update
@@ -29,7 +34,6 @@ public class ShootingCrystal : MonoBehaviour
         if(collision.gameObject.name == "Player")
         {
             player = collision.gameObject;
-            Debug.Log(player);
         }
     }
 
@@ -38,8 +42,6 @@ public class ShootingCrystal : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             player = null;
-            Debug.Log(player);
-
         }
     }
 }
