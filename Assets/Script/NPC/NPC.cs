@@ -25,7 +25,7 @@ public class NPC : MonoBehaviour, I_Interactable
     }
     public void Interact()
     {
-        if (dialogueData == null)
+        if (CurrentDialogue == null)
         {
             return;
         }
@@ -45,8 +45,8 @@ public class NPC : MonoBehaviour, I_Interactable
         isDialogueActive = true;
         dialogueIndex = 0;
 
-        nameText.SetText(dialogueData.npcName);
-        portraitImage.sprite = dialogueData.npcPotrait;
+        nameText.SetText(CurrentDialogue.npcName);
+        portraitImage.sprite = CurrentDialogue.npcPotrait;
 
         dialoguePanel.SetActive(true);
 
@@ -59,10 +59,10 @@ public class NPC : MonoBehaviour, I_Interactable
         if (isTyping)
         {
             StopAllCoroutines();
-            dialogueText.SetText(dialogueData.dialogueLines[dialogueIndex]);
+            dialogueText.SetText(CurrentDialogue.dialogueLines[dialogueIndex]);
             isTyping = false;
         }
-        else if (++dialogueIndex < dialogueData.dialogueLines.Length)
+        else if (++dialogueIndex < CurrentDialogue.dialogueLines.Length)
         {
             StartCoroutine(TypeLine()); 
         }
@@ -77,17 +77,17 @@ public class NPC : MonoBehaviour, I_Interactable
         isTyping = true;
         dialogueText.SetText("");
 
-        foreach(char letter in dialogueData.dialogueLines[dialogueIndex])
+        foreach(char letter in CurrentDialogue.dialogueLines[dialogueIndex])
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(dialogueData.typingSpeed);
+            yield return new WaitForSeconds(CurrentDialogue.typingSpeed);
         }
 
         isTyping=false;
 
-        if(dialogueData.autoProgressLines.Length > dialogueIndex && dialogueData.autoProgressLines[dialogueIndex] )
+        if(CurrentDialogue.autoProgressLines.Length > dialogueIndex && CurrentDialogue.autoProgressLines[dialogueIndex] )
         {
-            yield return new WaitForSeconds(dialogueData.autoPorgressDelay);
+            yield return new WaitForSeconds(CurrentDialogue.autoPorgressDelay);
             NextLine();
         }
     }
@@ -98,6 +98,9 @@ public class NPC : MonoBehaviour, I_Interactable
         isDialogueActive = false;
         dialogueText.SetText("");
         dialoguePanel.SetActive(false);
+
+        if (currentDialogueSet < dialogueSequence.Length - 1)
+            currentDialogueSet++;
     }
 
 
