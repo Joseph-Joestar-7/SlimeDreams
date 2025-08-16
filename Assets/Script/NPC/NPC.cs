@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GateSlime : MonoBehaviour, I_Interactable
+public class NPC : MonoBehaviour, I_Interactable
 {
     [SerializeField] private NPCDialogue dialogueData;
     [SerializeField] private GameObject dialoguePanel;
