@@ -101,6 +101,12 @@ public class NPC : MonoBehaviour, I_Interactable
 
         if (currentDialogueSet < dialogueSequence.Length - 1)
             currentDialogueSet++;
+
+        if (CurrentDialogue.disappearAfterDialogue)
+        {
+            gameObject.SetActive(false);
+        }
+            
     }
 
 
