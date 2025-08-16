@@ -28,9 +28,11 @@ public class EnemyPlantBase : MonoBehaviour
     [SerializeField] protected float attackDistance = 0.5f;
     protected PlantState plantState;
 
-    [SerializeField] private int attackTimeCooldown;
+    [SerializeField] protected int attackTimeCooldown;
     private float attackTimer;
     [SerializeField] protected int damageValue;
+
+    
     protected virtual void Start()
     {
         waitTimer = waitTimeAtSpot;
@@ -77,6 +79,9 @@ public class EnemyPlantBase : MonoBehaviour
             animator.SetFloat(lastX, direction.x);
             animator.SetFloat(lastY, direction.y);
         }
+
+        if (Input.GetKeyDown(KeyCode.Alpha1))
+            Debug.Log(this.plantState);
         
     }
 
@@ -89,20 +94,33 @@ public class EnemyPlantBase : MonoBehaviour
 
     protected virtual void Attack()
     {
-        attackTimer-= Time.deltaTime;
+        if (Vector2.Distance(transform.position, player.transform.position) > 0.5f)
+        {
+            plantState = PlantState.Chase;
+            //animator.SetBool("IsAttacking", false);
+            return;
+        }
+
+        attackTimer -= Time.deltaTime;
 
         if (attackTimer <= 0f)
         {
 
             animator.SetFloat(lastX, (float)Math.Ceiling(direction.x));
             animator.SetFloat(lastY, (float)Math.Ceiling(direction.y));
+            animator.SetFloat(speedMag,0);
             //Debug.Log(direction.x + " " + direction.y);
             //Debug.Log((float)Math.Ceiling(direction.x) + " " + (float)Math.Ceiling(direction.y));
+            Debug.Log("Attempt to attack");
+            animator.SetBool("IsAttacking",true);
 
-            animator.SetTrigger(attackTrigger);
-            
-         attackTimer = attackTimeCooldown;
+            attackTimer = attackTimeCooldown;
         }
+    }
+
+    protected void EndAttack()
+    {
+        animator.SetBool("IsAttacking", false);
     }
 
     protected void Chase()

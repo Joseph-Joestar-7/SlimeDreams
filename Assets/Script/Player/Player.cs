@@ -39,6 +39,7 @@ public class Player : MonoBehaviour
 
     private void GameInput_OnInteractAction(object sender, System.EventArgs e)
     {
+
         if (selectedInteractable != null)
         {
             selectedInteractable.Interact();
@@ -62,10 +63,13 @@ public class Player : MonoBehaviour
 
     private void HandleInteractions()
     {
-        float interactRadius = 2f;
+        
+        float interactRadius = 0.2f;
         Collider2D hit = Physics2D.OverlapCircle(transform.position, interactRadius, interactionLayerMask);
+       
         if (hit != null && hit.TryGetComponent(out I_Interactable i))
         {
+
             if (i != selectedInteractable)
                 selectedInteractable = i;
             else

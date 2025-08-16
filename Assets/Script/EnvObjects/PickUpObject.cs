@@ -7,7 +7,6 @@ public class PickUpObject : MonoBehaviour
     private string PLAYER_TAG = "Player";
     [SerializeField] private StatType pickUpType;
     [SerializeField] private int pickUpValue;
-    // Start is called before the first frame update
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag(PLAYER_TAG))
