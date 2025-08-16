@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 518eff455db9bb940913df6945ca1b9a, type: 3}
+  m_Name: GS_Dialogue1
+  m_EditorClassIdentifier: 
+  npcName: GateSlime
+  npcPotrait: {fileID: -6106897985949965729, guid: 2deb2ae350f8a1e4299ff142c453b342, type: 3}
+  dialogueLines:
+  - "Ah\u2026 another wanderer. You\u2019ve taken quite the strange form, haven\u2019t
+    you? A little slime\u2026 trapped in your own dream."
+  - "See that shimmer above you? That\u2019s your Lucidity. It\u2019s the only thing
+    keeping you aware that this is a dream. Lose it all, and you\u2019ll sink deeper\u2026
+    until you forget yourself completely"
+  - "I can show you the way forward\u2026 but knowledge isn\u2019t free. Bring me
+    the dream coins scattered here, and I\u2019ll open the path."
+  - And beware the plants. They hunger, and even slime is not beyond their reach.
+  autoProgressLines: 01010100
+  autoPorgressDelay: 1.5
+  typingSpeed: 0.05
+  voiceSound: {fileID: 0}
+  voicePitch: 1
+  disappearAfterDialogue: 1
