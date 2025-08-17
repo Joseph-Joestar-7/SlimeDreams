@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class NPCSpawnTrigger : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private NPC npc;
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        
+        if (!other.CompareTag("Player")) return;
+
+        npc.transform.position = this.transform.position;
+
+        npc.gameObject.SetActive(true);
+        npc.Interact();
+
+        gameObject.SetActive(false);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -7,6 +7,8 @@ public class ShootingCrystal : MonoBehaviour
     private GameObject player;
     [SerializeField] private GameInput gameInput;
     [SerializeField] private GameObject projectile;
+    [SerializeField] private float damagePerHit;
+    
     private void Start()
     {
         player = null;
@@ -25,7 +27,7 @@ public class ShootingCrystal : MonoBehaviour
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         Vector2 direction = (mousePos - this.transform.position).normalized;
         proj.GetComponent<Projectile>().SetDirection(direction);
-        proj.GetComponent<Projectile>().SetDamage(10);
+        proj.GetComponent<Projectile>().SetDamage(damagePerHit);
     }
 
     // Start is called before the first frame update
