@@ -13,6 +13,7 @@ public class NPCSpawnTrigger : MonoBehaviour
         npc.transform.position = this.transform.position;
 
         npc.gameObject.SetActive(true);
+        npc.AppearNPC();
         npc.Interact();
 
         gameObject.SetActive(false);

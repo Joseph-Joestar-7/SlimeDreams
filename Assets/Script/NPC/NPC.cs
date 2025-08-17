@@ -110,9 +110,20 @@ public class NPC : MonoBehaviour, I_Interactable
 
         if (CurrentDialogue.disappearAfterDialogue)
         {
-            StartCoroutine(dis.Vanish());
+            StartCoroutine(VanishAndDisable());
         }
             
+    }
+
+    public void AppearNPC()
+    {
+        StartCoroutine(dis.Appear());
+    }
+
+    IEnumerator VanishAndDisable()
+    {
+        yield return StartCoroutine(dis.Vanish()); 
+        gameObject.SetActive(false);              
     }
 
 
