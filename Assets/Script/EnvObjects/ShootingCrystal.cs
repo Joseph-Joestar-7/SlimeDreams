@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class ShootingCrystal : MonoBehaviour
 {
@@ -8,11 +9,13 @@ public class ShootingCrystal : MonoBehaviour
     [SerializeField] private GameInput gameInput;
     [SerializeField] private GameObject projectile;
     [SerializeField] private float damagePerHit;
-    
+
+    [SerializeField] private Light2D light;
+
     private void Start()
     {
         player = null;
-
+        light.intensity = 0.5f;
         gameInput.OnUseRockAction += GameInput_OnUseRockAction;
     }
 
@@ -36,6 +39,7 @@ public class ShootingCrystal : MonoBehaviour
         if(collision.gameObject.name == "Player")
         {
             player = collision.gameObject;
+            light.intensity = 1.5f;
         }
     }
 
@@ -44,6 +48,7 @@ public class ShootingCrystal : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             player = null;
+            light.intensity = 0.5f;
         }
     }
 }

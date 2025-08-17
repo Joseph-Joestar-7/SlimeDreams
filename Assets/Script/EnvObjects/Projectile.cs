@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    private float speed = 3f;
+    private float speed = 1f;
     public float lifetime = 2f; // auto-destroy after 2s
     private float dam;
     private Vector2 direction;

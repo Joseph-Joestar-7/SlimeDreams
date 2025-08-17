@@ -18,12 +18,12 @@ MonoBehaviour:
   - "Ah\u2026 another wanderer. You\u2019ve taken quite the strange form, haven\u2019t
     you? A little slime\u2026 trapped in your own dream."
   - "See that shimmer above you? That\u2019s your Lucidity. It\u2019s the only thing
-    keeping you aware that this is a dream. Lose it all, and you\u2019ll sink deeper\u2026
-    until you forget yourself completely"
+    keeping you aware that this is a dream."
+  - "Lose it all\u2026 and you might never wake."
   - "I can show you the way forward\u2026 but knowledge isn\u2019t free. Bring me
     the dream coins scattered here, and I\u2019ll open the path."
   - And beware the plants. They hunger, and even slime is not beyond their reach.
-  autoProgressLines: 01010100
+  autoProgressLines: 0101010100
   autoPorgressDelay: 1.5
   typingSpeed: 0.05
   voiceSound: {fileID: 0}

@@ -2,7 +2,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public enum StatType { Lucidity, Coins }
+public enum StatType { Lucidity, Gold }
 
 public class StatComponent : MonoBehaviour
 {
@@ -30,7 +30,7 @@ public class StatComponent : MonoBehaviour
                 lucidity += amount;
                 Debug.Log(lucidity);
                 break;
-            case StatType.Coins:
+            case StatType.Gold:
                 coins += amount;
                 break;
         }
