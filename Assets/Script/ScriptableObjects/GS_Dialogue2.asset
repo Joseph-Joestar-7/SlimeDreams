@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 518eff455db9bb940913df6945ca1b9a, type: 3}
   m_Name: GS_Dialogue2
   m_EditorClassIdentifier: 
-  npcName: 
-  npcPotrait: {fileID: 0}
-  dialogueLines: []
-  autoProgressLines: 
+  npcName: GateSlime
+  npcPotrait: {fileID: -6106897985949965729, guid: 2deb2ae350f8a1e4299ff142c453b342, type: 3}
+  dialogueLines:
+  - "Hah\u2026 finally. Took you long enough to stumble this far."
+  - "See that red crystal? Touch it, and you\u2019ll feel its sting in your veins."
+  - Use it to strike down that plant before it makes dinner out of you.
+  autoProgressLines: 010100
   autoPorgressDelay: 1.5
   typingSpeed: 0.05
   voiceSound: {fileID: 0}
   voicePitch: 1
-  disappearAfterDialogue: 0
+  disappearAfterDialogue: 1
