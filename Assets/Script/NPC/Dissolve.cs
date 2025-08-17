@@ -9,16 +9,17 @@ public class Dissolve : MonoBehaviour
     private SpriteRenderer _spriteRenderer;
     private Material material;
 
-    private int dissolveAmount = Shader.PropertyToID("DissolveAmount");
+    private int dissolveAmount = Shader.PropertyToID("_DissolveAmount");
 
     // Start is called before the first frame update
     void Start()
     {
         _spriteRenderer = GetComponent<SpriteRenderer>();
         material = _spriteRenderer.material;
+        material.SetFloat(dissolveAmount, 0);
     }
 
-    private IEnumerator Vanish()
+    public IEnumerator Vanish()
     {
         float elapsedTime = 0f;
         while (elapsedTime < _dissolveTime)
@@ -32,7 +33,7 @@ public class Dissolve : MonoBehaviour
         }
     }
 
-    private IEnumerator Appear()
+    public IEnumerator Appear()
     {
         float elapsedTime = 0f;
         while (elapsedTime < _dissolveTime)

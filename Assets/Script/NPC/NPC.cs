@@ -16,9 +16,15 @@ public class NPC : MonoBehaviour, I_Interactable
     [SerializeField] private TMP_Text dialogueText, nameText;
     [SerializeField] private Image portraitImage;
 
+    private Dissolve dis;
+
     private int dialogueIndex;
     private bool isTyping, isDialogueActive;
 
+    void Start()
+    {
+        dis = GetComponent<Dissolve>();
+    }
     public bool canInteract()
     {
         return !isDialogueActive;
@@ -104,7 +110,7 @@ public class NPC : MonoBehaviour, I_Interactable
 
         if (CurrentDialogue.disappearAfterDialogue)
         {
-            gameObject.SetActive(false);
+            StartCoroutine(dis.Vanish());
         }
             
     }
