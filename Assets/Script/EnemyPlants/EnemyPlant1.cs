@@ -8,7 +8,7 @@ public class EnemyPlant1 : EnemyPlantBase
     [SerializeField] private PickUpObject pickupObject;
     public void ApplyAttackDamage()
     {
-        if (damageAppliedThisAttack) return;  // <--- prevents duplicate applications
+        if (damageAppliedThisAttack) return; 
         damageAppliedThisAttack = true;
 
         if (player != null)
