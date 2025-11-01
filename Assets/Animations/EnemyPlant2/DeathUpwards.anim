@@ -20,25 +20,25 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 1538346663, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
+      value: {fileID: -2076206762, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
     - time: 0.083333336
-      value: {fileID: -392165066, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
+      value: {fileID: -2058064241, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
     - time: 0.16666667
-      value: {fileID: 132604522, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
+      value: {fileID: -1617512274, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
     - time: 0.25
-      value: {fileID: -1206413876, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
+      value: {fileID: 708988897, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
     - time: 0.33333334
-      value: {fileID: 2103926070, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
+      value: {fileID: 1635202951, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
     - time: 0.41666666
-      value: {fileID: 1232236743, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
+      value: {fileID: 1113799958, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
     - time: 0.5
-      value: {fileID: 1092291621, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
+      value: {fileID: 1533084487, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
     - time: 0.5833333
-      value: {fileID: 302392010, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
+      value: {fileID: -2043411621, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
     - time: 0.6666667
-      value: {fileID: 261847991, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
+      value: {fileID: -1939363947, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
     - time: 0.75
-      value: {fileID: 1452477372, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
+      value: {fileID: 563773082, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -58,16 +58,16 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 1538346663, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
-    - {fileID: -392165066, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
-    - {fileID: 132604522, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
-    - {fileID: -1206413876, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
-    - {fileID: 2103926070, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
-    - {fileID: 1232236743, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
-    - {fileID: 1092291621, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
-    - {fileID: 302392010, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
-    - {fileID: 261847991, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
-    - {fileID: 1452477372, guid: aeb49b4cba252cc4baac72192137e77a, type: 3}
+    - {fileID: -2076206762, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
+    - {fileID: -2058064241, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
+    - {fileID: -1617512274, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
+    - {fileID: 708988897, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
+    - {fileID: 1635202951, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
+    - {fileID: 1113799958, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
+    - {fileID: 1533084487, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
+    - {fileID: -2043411621, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
+    - {fileID: -1939363947, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
+    - {fileID: 563773082, guid: f7c3fda0589c6e946be195b2952bc3b5, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
@@ -78,7 +78,7 @@ AnimationClip:
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -93,7 +93,7 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0.75
+  - time: 0.6666667
     functionName: SpawnPickup
     data: 
     objectReferenceParameter: {fileID: 0}
