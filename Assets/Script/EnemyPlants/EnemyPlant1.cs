@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyPlant1 : EnemyPlantBase
@@ -26,9 +27,9 @@ public class EnemyPlant1 : EnemyPlantBase
 
     protected override void HandleDeath()
     {
+        base.HandleDeath();
         GetComponent<Collider2D>().enabled = false;
-        animator.SetTrigger("Die");
-
+        animator.SetTrigger("Death");
         Destroy(gameObject, 1f);
     }
 }

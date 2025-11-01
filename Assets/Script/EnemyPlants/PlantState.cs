@@ -7,6 +7,7 @@ public enum PlantState
     Patrol,
     Chase,
     Attack,
-    Return
+    Return,
+    Dead
 }
 

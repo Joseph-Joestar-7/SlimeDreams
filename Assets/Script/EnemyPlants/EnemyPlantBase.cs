@@ -53,13 +53,15 @@ public class EnemyPlantBase : MonoBehaviour
         Debug.Log(health);
         if(health <= 0)
         {
+            plantState = PlantState.Dead;
             HandleDeath();
         }
     }
 
     protected virtual void HandleDeath()
     {
-
+        animator.SetFloat(lastX, (float)Math.Ceiling(direction.x));
+        animator.SetFloat(lastY, (float)Math.Ceiling(direction.y));
     }
 
     
