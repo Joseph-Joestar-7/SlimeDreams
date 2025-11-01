@@ -16,10 +16,19 @@ public class EnemyPlant1 : EnemyPlantBase
         }
     }
 
+    public void SpawnPickup()
+    {
+        if (pickupObject != null)
+        {
+            Instantiate(pickupObject, transform.position, Quaternion.identity);
+        }
+    }
+
     protected override void HandleDeath()
     {
-        Destroy(this.gameObject);
-        Instantiate(pickupObject, transform.position, Quaternion.identity);
+        GetComponent<Collider2D>().enabled = false;
+        animator.SetTrigger("Die");
 
+        Destroy(gameObject, 1f);
     }
 }
