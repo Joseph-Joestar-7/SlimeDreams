@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyPlant1 : EnemyPlantBase
 {
+    [SerializeField] private PickUpObject pickupObject;
     public void ApplyAttackDamage()
     {
         if (damageAppliedThisAttack) return;  // <--- prevents duplicate applications
@@ -13,5 +14,12 @@ public class EnemyPlant1 : EnemyPlantBase
         {
             player.GetComponent<StatComponent>().IncreaseValue(StatType.Lucidity, -damageValue);
         }
+    }
+
+    protected override void HandleDeath()
+    {
+        Destroy(this.gameObject);
+        Instantiate(pickupObject, transform.position, Quaternion.identity);
+
     }
 }

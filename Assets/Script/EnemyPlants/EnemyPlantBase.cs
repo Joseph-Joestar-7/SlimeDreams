@@ -57,7 +57,7 @@ public class EnemyPlantBase : MonoBehaviour
         }
     }
 
-    protected void HandleDeath()
+    protected virtual void HandleDeath()
     {
 
     }
