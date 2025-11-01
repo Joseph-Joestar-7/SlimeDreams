@@ -34,7 +34,10 @@ public class EnemyPlantBase : MonoBehaviour
 
 
     [SerializeField] protected float health=100;
-    
+
+    private bool isAttacking = false;
+    protected bool damageAppliedThisAttack = false;
+
     protected virtual void Start()
     {
         waitTimer = waitTimeAtSpot;
@@ -50,8 +53,13 @@ public class EnemyPlantBase : MonoBehaviour
         Debug.Log(health);
         if(health <= 0)
         {
-            Destroy(gameObject);
+            HandleDeath();
         }
+    }
+
+    protected void HandleDeath()
+    {
+
     }
 
     
@@ -106,6 +114,8 @@ public class EnemyPlantBase : MonoBehaviour
 
     protected virtual void Attack()
     {
+        if (isAttacking) return;
+
         if (Vector2.Distance(transform.position, player.transform.position) > 0.5f)
         {
             plantState = PlantState.Chase;
@@ -124,7 +134,12 @@ public class EnemyPlantBase : MonoBehaviour
             //Debug.Log(direction.x + " " + direction.y);
             //Debug.Log((float)Math.Ceiling(direction.x) + " " + (float)Math.Ceiling(direction.y));
             Debug.Log("Attempt to attack");
-            animator.SetBool("IsAttacking",true);
+
+            isAttacking = true;               // mark attack started
+            damageAppliedThisAttack = false;
+
+            // animator.SetBool("IsAttacking",true);
+            animator.SetTrigger(attackTrigger);
 
             attackTimer = attackTimeCooldown;
         }
@@ -132,7 +147,9 @@ public class EnemyPlantBase : MonoBehaviour
 
     protected void EndAttack()
     {
-        animator.SetBool("IsAttacking", false);
+       // animator.SetBool("IsAttacking", false);
+        isAttacking = false;                 // allow next attack
+
     }
 
     protected void Chase()

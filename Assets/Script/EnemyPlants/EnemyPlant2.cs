@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyPlant1 : EnemyPlantBase
+public class EnemyPlant2 : EnemyPlantBase
 {
     public void ApplyAttackDamage()
     {
@@ -11,7 +11,8 @@ public class EnemyPlant1 : EnemyPlantBase
 
         if (player != null)
         {
-            player.GetComponent<StatComponent>().IncreaseValue(StatType.Lucidity, -damageValue);
+            player.GetComponent<StatComponent>().IncreaseValue(StatType.Lucidity,-damageValue);
+            player.GetComponent<StatComponent>().IncreaseValue(StatType.Gold, -1);
         }
     }
 }
